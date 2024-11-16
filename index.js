@@ -23,7 +23,7 @@ const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
 /******  4ff8e07c-1617-4970-ac79-71d12fe8786f  *******/
-app.use("/", UserRouter);
+app.use("/api", UserRouter);
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

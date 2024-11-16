@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  no_hp: {
+  hp: {
     type: String,
     required: true,
   },

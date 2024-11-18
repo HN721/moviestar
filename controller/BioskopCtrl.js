@@ -44,3 +44,5 @@ const BioskopCtrl = {
     }
   },
 };
+
+module.exports = BioskopCtrl;

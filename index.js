@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const UserRouter = require("./router/UserRouter");
 const FilmRouter = require("./router/FilmRouter");
+const BioskopRouter = require("./router/BioskopRouter");
+const JadwalRouter = require("./router/JadwalRouter");
+
 const cors = require("cors");
 
 const app = express();
@@ -30,6 +33,8 @@ mongoose
 /******  4ff8e07c-1617-4970-ac79-71d12fe8786f  *******/
 app.use("/api", UserRouter);
 app.use("/api/film", FilmRouter);
+app.use("/api/bioskop", BioskopRouter);
+app.use("/api/jadwal", JadwalRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

@@ -4,6 +4,8 @@ const UserRouter = require("./router/UserRouter");
 const FilmRouter = require("./router/FilmRouter");
 const BioskopRouter = require("./router/BioskopRouter");
 const JadwalRouter = require("./router/JadwalRouter");
+const SeatRouter = require("./router/SeatRouter");
+const OrderRouter = require("./router/OrdeRouter");
 
 const cors = require("cors");
 
@@ -36,6 +38,8 @@ app.use("/api", UserRouter);
 app.use("/api/film", FilmRouter);
 app.use("/api/bioskop", BioskopRouter);
 app.use("/api/jadwal", JadwalRouter);
+app.use("/api/seat", SeatRouter);
+app.use("/api/order", OrderRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

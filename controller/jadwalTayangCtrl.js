@@ -3,11 +3,17 @@ const Jadwal = require("../model/jadwalTayang");
 const jadwalController = {
   create: async (req, res) => {
     try {
-      const { movie, bioskop, tanggal, waktu } = req.body;
-      if (!movie || !bioskop || !tanggal || !waktu) {
+      const { movie, bioskop, tanggal, waktu, harga } = req.body;
+      if ((!movie || !bioskop || !tanggal || !waktu, !harga)) {
         return res.status(400).json({ error: "All fields are required" });
       }
-      const jadwal = await Jadwal.create({ movie, bioskop, tanggal, waktu });
+      const jadwal = await Jadwal.create({
+        movie,
+        bioskop,
+        tanggal,
+        waktu,
+        harga,
+      });
       res.status(201).json(jadwal);
     } catch (error) {
       return res.status(500).json({ error: error.message });

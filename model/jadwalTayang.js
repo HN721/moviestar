@@ -11,10 +11,14 @@ const jadwalTayangSchema = new mongoose.Schema({
   },
   tanggal: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
   waktu: {
     type: String,
+    required: true,
+  },
+  harga: {
+    type: Number,
     required: true,
   },
 });

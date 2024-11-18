@@ -29,7 +29,8 @@ mongoose
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);
   });
-
+//id film 6739fff9cc30e78ea94a0e06
+//id bioskop 673ad1b28e214e93a6607b0b
 /******  4ff8e07c-1617-4970-ac79-71d12fe8786f  *******/
 app.use("/api", UserRouter);
 app.use("/api/film", FilmRouter);

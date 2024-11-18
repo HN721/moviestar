@@ -12,6 +12,10 @@ const userController = {
       if (userExists) {
         return res.status(400).json({ message: "Email Sudah Ada" });
       }
+      const hpExists = await User.findOne({ hp });
+      if (hpExists) {
+        return res.status(400).json({ message: "Nomor HP Sudah Ada" });
+      }
       const salt = await bcrypt.genSalt(10);
       const hashPass = await bcrypt.hash(password, salt);
       const user = await User.create({ email, password: hashPass, hp, name });
@@ -45,6 +49,15 @@ const userController = {
       });
     } catch (error) {
       console.error("Error in login:", error.message); // Log error
+      res.status(500).json({ message: error.message });
+    }
+  },
+  getAll: async (req, res) => {
+    try {
+      const user = await User.find();
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error("Error in getAll:", error.message); // Log error
       res.status(500).json({ message: error.message });
     }
   },

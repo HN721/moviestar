@@ -6,7 +6,7 @@ const BioskopRouter = require("./router/BioskopRouter");
 const JadwalRouter = require("./router/JadwalRouter");
 const SeatRouter = require("./router/SeatRouter");
 const OrderRouter = require("./router/OrdeRouter");
-
+const OrderDetailRouter = require("./router/OrderDetail");
 const cors = require("cors");
 
 const app = express();
@@ -33,13 +33,15 @@ mongoose
   });
 //id film 6739fff9cc30e78ea94a0e06
 //id bioskop 673ad1b28e214e93a6607b0b
+//id user 673b47e8633289404cf72dd7
 /******  4ff8e07c-1617-4970-ac79-71d12fe8786f  *******/
-app.use("/api", UserRouter);
+app.use("/api/user", UserRouter);
 app.use("/api/film", FilmRouter);
 app.use("/api/bioskop", BioskopRouter);
 app.use("/api/jadwal", JadwalRouter);
 app.use("/api/seat", SeatRouter);
 app.use("/api/order", OrderRouter);
+app.use("/api/detail", OrderDetailRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

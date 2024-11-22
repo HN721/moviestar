@@ -3,7 +3,8 @@ const Film = require("../model/film");
 const filmController = {
   create: async (req, res) => {
     try {
-      const { judul, deskripsi, durasi, gambar } = req.body;
+      const { judul, deskripsi, durasi } = req.body;
+      const gambar = req.file ? req.file.path : null;
 
       // Input validation
       if (!judul || !deskripsi || !durasi || !gambar) {
@@ -29,18 +30,15 @@ const filmController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { judul, deskripsi, durasi, gambar } = req.body;
+      const { judul, deskripsi, durasi } = req.body;
+      const gambar = req.file ? req.file.path : null;
 
-      // Input validation
-      if (!judul || !deskripsi || !durasi || !gambar) {
-        return res.status(400).json({ error: "All fields are required" });
-      }
+      const updateData = { judul, deskripsi, durasi };
+      if (gambar) updateData.gambar = gambar;
 
-      const updatedFilm = await Film.findByIdAndUpdate(
-        id,
-        { judul, deskripsi, durasi, gambar },
-        { new: true } // Return the updated document
-      );
+      const updatedFilm = await Film.findByIdAndUpdate(id, updateData, {
+        new: true,
+      });
 
       if (!updatedFilm) {
         return res.status(404).json({ error: "Film not found" });

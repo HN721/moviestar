@@ -42,6 +42,7 @@ const userController = {
       const token = jwt.sign({ id: user._id }, "hosea123", { expiresIn: "1h" });
       return res.status(200).json({
         message: "Login successful",
+        role: user.role,
         token,
         id: user._id,
         email: user.email,

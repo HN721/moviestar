@@ -4,7 +4,7 @@ const jadwalController = {
   create: async (req, res) => {
     try {
       const { movie, bioskop, tanggal, waktu, harga } = req.body;
-      if ((!movie || !bioskop || !tanggal || !waktu, !harga)) {
+      if (!movie || !bioskop || !tanggal || !waktu || !harga) {
         return res.status(400).json({ error: "All fields are required" });
       }
       const jadwal = await Jadwal.create({

@@ -43,6 +43,7 @@ const userController = {
       return res.status(200).json({
         message: "Login successful",
         role: user.role,
+        nama: user.name,
         token,
         id: user._id,
         email: user.email,

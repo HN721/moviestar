@@ -1,12 +1,20 @@
 const Film = require("../model/film");
+const cloudinary = require("../fileUploads");
 
 const filmController = {
   create: async (req, res) => {
     try {
       const { judul, deskripsi, durasi } = req.body;
-      const gambar = req.file ? req.file.path : null;
 
-      // Input validation
+      let gambar;
+      if (req.file) {
+        const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+          folder: "films", // Folder di Cloudinary
+        });
+        gambar = uploadResult.secure_url;
+      }
+
+      // Validasi input
       if (!judul || !deskripsi || !durasi || !gambar) {
         return res.status(400).json({ error: "All fields are required" });
       }
@@ -31,7 +39,14 @@ const filmController = {
     try {
       const { id } = req.params;
       const { judul, deskripsi, durasi } = req.body;
-      const gambar = req.file ? req.file.path : null;
+
+      let gambar;
+      if (req.file) {
+        const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+          folder: "films",
+        });
+        gambar = uploadResult.secure_url;
+      }
 
       const updateData = { judul, deskripsi, durasi };
       if (gambar) updateData.gambar = gambar;

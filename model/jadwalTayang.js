@@ -10,8 +10,7 @@ const jadwalTayangSchema = new mongoose.Schema({
     ref: "Bioskop",
   },
   tanggal: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
   waktu: {
     type: String,

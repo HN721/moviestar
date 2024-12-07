@@ -63,6 +63,33 @@ const userController = {
       res.status(500).json({ message: error.message });
     }
   },
+  update: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { email, password, hp, name } = req.body;
+      const salt = await bcrypt.genSalt(10);
+      const hashPass = await bcrypt.hash(password, salt);
+      const user = await User.findOneAndUpdate(
+        { _id: id },
+        { email, password: hashPass, hp, name },
+        { new: true }
+      );
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error("Error in update:", error.message); // Log error
+      res.status(500).json({ message: error.message });
+    }
+  },
+  findOne: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id);
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error("Error in findOne:", error.message); // Log error
+      res.status(500).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = userController;

@@ -18,6 +18,7 @@ router.put(
   upload.single("gambar"),
   filmController.update
 );
+router.get("/get-one/:id", filmController.getOne);
 router.delete("/delete/:id", isAuthenticated, filmController.delete);
 
 module.exports = router;

@@ -34,6 +34,18 @@ const filmController = {
       res.status(500).json({ error: error.message });
     }
   },
+  getOne: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const film = await Film.findById(id);
+      if (!film) {
+        return res.status(404).json({ error: "Film not found" });
+      }
+      res.status(200).json(film);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 
   update: async (req, res) => {
     try {

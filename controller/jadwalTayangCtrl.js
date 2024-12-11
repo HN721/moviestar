@@ -52,5 +52,16 @@ const jadwalController = {
     }
     res.status(200).json(deletedJadwal);
   },
+  findOne: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const jadwal = await Jadwal.findById(id)
+        .populate("movie")
+        .populate("bioskop");
+      res.status(200).json(jadwal);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  },
 };
 module.exports = jadwalController;

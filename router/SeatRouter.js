@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post("/create", isAuthenticated, seatController.create);
 router.get("/get-all", isAuthenticated, seatController.getAll);
+router.get("/get-one/:id", isAuthenticated, seatController.getOne);
 
 module.exports = router;

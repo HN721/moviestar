@@ -50,6 +50,7 @@ const seatController = {
           .status(404)
           .json({ error: "Seats not found for the provided schedule" });
       }
+      console.log(req.user);
       res.status(200).json(seats);
     } catch (error) {
       res.status(500).json({ error: error.message });

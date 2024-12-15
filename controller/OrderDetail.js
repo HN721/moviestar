@@ -11,7 +11,7 @@ const orderDetailController = {
   },
   create: async (req, res) => {
     try {
-      const { order, kursi } = req.body;
+      const { order, kursi, user } = req.body;
       if (!order || !kursi) {
         return res.status(400).json({ error: "All fields are required" });
       }

@@ -7,6 +7,7 @@ const JadwalRouter = require("./router/JadwalRouter");
 const SeatRouter = require("./router/SeatRouter");
 const OrderRouter = require("./router/OrdeRouter");
 const OrderDetailRouter = require("./router/OrderDetail");
+const Ticket = require("./router/TicketRouter");
 const cors = require("cors");
 
 const app = express();
@@ -36,6 +37,7 @@ mongoose
 //id user 673b47e8633289404cf72dd7
 /******  4ff8e07c-1617-4970-ac79-71d12fe8786f  *******/
 app.use("/api/user", UserRouter);
+app.use("/api/ticket", Ticket);
 app.use("/api/film", FilmRouter);
 app.use("/api/bioskop", BioskopRouter);
 app.use("/api/jadwal", JadwalRouter);

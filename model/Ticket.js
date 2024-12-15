@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
-const orderDetailSchema = new mongoose.Schema({
-  order: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Order",
-    required: true,
-  },
-  kursi: {
+
+const ticketSchema = new mongoose.Schema({
+  seat: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Seat",
+    required: true,
+  },
+  jadwal: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Jadwal",
     required: true,
   },
   user: {
@@ -16,6 +17,7 @@ const orderDetailSchema = new mongoose.Schema({
     required: true,
   },
 });
-const OrderDetail = mongoose.model("OrderDetail", orderDetailSchema);
 
-module.exports = OrderDetail;
+const Ticket = mongoose.model("Ticket", ticketSchema);
+
+module.exports = Ticket;

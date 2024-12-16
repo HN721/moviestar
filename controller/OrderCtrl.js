@@ -27,9 +27,17 @@ const orderController = {
   findOne: async (req, res) => {
     try {
       const { id } = req.params;
-      const order = await Order.findOne({ user: id })
-        .populate("jadwal")
+      const order = await Order.find({ user: id })
+        .populate({
+          path: "jadwal",
+          select: "movie bioskop",
+          populate: [
+            { path: "movie", select: "judul" }, // Ambil hanya nama movie
+            { path: "bioskop", select: "nama" }, // Ambil hanya nama bioskop
+          ],
+        })
         .populate("user");
+
       res.status(200).json(order);
     } catch (error) {
       return res.status(500).json({ error: error.message });

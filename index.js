@@ -2,14 +2,14 @@ const express = require("express");
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-const UserRouter = require("../router/UserRouter");
-const FilmRouter = require("../router/FilmRouter");
-const BioskopRouter = require("../router/BioskopRouter");
-const JadwalRouter = require("../router/JadwalRouter");
-const SeatRouter = require("../router/SeatRouter");
-const OrderRouter = require("../router/OrdeRouter");
-const OrderDetailRouter = require("../router/OrderDetail");
-const Ticket = require("../router/TicketRouter");
+const UserRouter = require("./router/UserRouter");
+const FilmRouter = require("./router/FilmRouter");
+const BioskopRouter = require("./router/BioskopRouter");
+const JadwalRouter = require("./router/JadwalRouter");
+const SeatRouter = require("./router/SeatRouter");
+const OrderRouter = require("./router/OrdeRouter");
+const OrderDetailRouter = require("./router/OrderDetail");
+const Ticket = require("./router/TicketRouter");
 const cors = require("cors");
 
 const app = express();

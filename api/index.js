@@ -1,13 +1,15 @@
 const express = require("express");
+require("dotenv").config();
+
 const mongoose = require("mongoose");
-const UserRouter = require("./router/UserRouter");
-const FilmRouter = require("./router/FilmRouter");
-const BioskopRouter = require("./router/BioskopRouter");
-const JadwalRouter = require("./router/JadwalRouter");
-const SeatRouter = require("./router/SeatRouter");
-const OrderRouter = require("./router/OrdeRouter");
-const OrderDetailRouter = require("./router/OrderDetail");
-const Ticket = require("./router/TicketRouter");
+const UserRouter = require("../router/UserRouter");
+const FilmRouter = require("../router/FilmRouter");
+const BioskopRouter = require("../router/BioskopRouter");
+const JadwalRouter = require("../router/JadwalRouter");
+const SeatRouter = require("../router/SeatRouter");
+const OrderRouter = require("../router/OrdeRouter");
+const OrderDetailRouter = require("../router/OrderDetail");
+const Ticket = require("../router/TicketRouter");
 const cors = require("cors");
 
 const app = express();
@@ -23,9 +25,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 mongoose
-  .connect(
-    "mongodb+srv://hosea1422:qSZnSG6lHP6x9Rt5@mtixxx.8uavj.mongodb.net/?retryWrites=true&w=majority&appName=mtixxx"
-  )
+  .connect(process.env.DB_URL)
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -45,7 +45,7 @@ app.use("/api/seat", SeatRouter);
 app.use("/api/order", OrderRouter);
 app.use("/api/detail", OrderDetailRouter);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });

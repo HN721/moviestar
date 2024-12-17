@@ -1,1 +1,14 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
+{
+    "version": 2,
+    "routes": [
+      { "src": "/api/bioskop", "dest": "/api/movie.js" },
+      { "src": "/api/film", "dest": "/api/movie.js" },
+      { "src": "/api/jadwal", "dest": "/api/movie.js" },
+      { "src": "/api/order-detail", "dest": "/api/movie.js" },
+      { "src": "/api/order", "dest": "/api/movie.js" },
+      { "src": "/api/seat", "dest": "/api/movie.js" },
+      { "src": "/api/ticket", "dest": "/api/movie.js" },
+      { "src": "/api/user", "dest": "/api/movie.js" }
+    ]
+  }
+  

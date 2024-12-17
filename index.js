@@ -14,7 +14,7 @@ const cors = require("cors");
 
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:5173", // Alamat frontend Anda
+  origin: "https://movie-star-frontend.vercel.app", // Alamat frontend Anda
   methods: ["GET", "POST", "PUT", "DELETE"], // HTTP methods yang diizinkan
   allowedHeaders: ["Content-Type", "Authorization"], // Header yang diizinkan
   credentials: true, // J
